@@ -48,6 +48,7 @@ ul{
 }
 .park-list{
     margin: 0 auto;
+    list-style: none;
 }
 .park-item{
     padding: 2%;
@@ -56,7 +57,10 @@ ul{
 .park-item p{
     margin-left: 10%;
 }
-button{
+.js-details{
+    border: 1px solid darkgray;
+}
+button, input[type="submit"]{
     display: block;
     width: 250px;
     height: 25px;
@@ -65,6 +69,9 @@ button{
 h2, h3{
     text-align: center;
     padding: 2%;
+}
+.hidden{
+    display: none;
 }
 .trail-list{
     margin: 2% auto;

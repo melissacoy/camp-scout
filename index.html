@@ -11,17 +11,29 @@
     <header>
       <h1>Camp Scout</h1>
     </header>
-    <body>
-        <section>
-                <input type="text" class="search-bar" placeholder="enter a city, address, or landmark">
-                <button type="submit" class="search-bar">Scout!</button>
-        </section>
-        <main class="summary">
-            <p>Search for campgrounds across the US and Canada and 
-                get information on nearby hiking trails to make a 
-              more informed decision on where to stage your next adventure.
-            </p>
-        </main>
-    </body>
+    <section>
+        <form id="js-form">
+            <input type="text" class="search-bar js-address-search" placeholder="enter a city, address, or landmark" required>
+            <input type="submit" class="search-bar js-search" value="Scout">
+        </form>
+    </section>
+    <main class="summary">
+        <p>Search for campgrounds across the US and Canada and 
+            get information on nearby hiking trails to make a 
+            more informed decision on where to stage your next adventure.
+        </p>
+    </main>
+    <section class="list-container">
+        <ul class="park-list js-park-list hidden">
+                <ul class="trail-list js-trail-list hidden">
+                </ul>
+        </ul>
+    </section>
+<!--jQUERY/JS-SCRIPTS-->
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+  <script src="index.js"></script>
 </body>
 </html>
