@@ -65,6 +65,7 @@ function displayCamps(responseJson){
         </li>`);
     };
 }         
+//get lat/lng from camp
 //listen for campground GETTRAILS selection
 function getTrails(lat, lng){
 $('.js-trails').click(event => {
@@ -78,7 +79,7 @@ $('.js-trails').click(event => {
     })
     .then(responseJson => {
         console.log(responseJson)
-       return displayTrails(responseJson);
+        return displayTrails(responseJson);
     })
     .catch(Error => {
         $('p').html(`Something went wrong getting your trails.`)
