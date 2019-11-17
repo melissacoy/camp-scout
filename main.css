@@ -54,8 +54,9 @@ ul{
     padding: 2%;
     border-bottom: 2px solid darkgray;
 }
-.park-item p{
-    margin-left: 10%;
+.park-box p{
+    border: 2px solid darkgray;
+    text-align: center;
 }
 .js-details{
     border: 1px solid darkgray;
@@ -73,9 +74,12 @@ h2, h3{
 .hidden{
     display: none;
 }
-.trail-list{
+.js-trail-list{
     margin: 2% auto;
     max-width: 600px;
+}
+.js-trail-summary{
+    text-align: center;
 }
 .trail-name{
     font-weight: bold;

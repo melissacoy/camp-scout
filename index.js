@@ -1,7 +1,7 @@
 /* ----- LANDING PAGE -----*/
 'use strict'
-let geoKey = config.GEO_KEY;
-let hikeKey = config.HIKE_KEY;
+let geoKey = (config.GEO_KEY);
+let hikeKey = (config.HIKE_KEY);
 //listen for user address submit
 function onSubmit(){
     $('.js-search').click(event => {
@@ -20,7 +20,7 @@ function emptySubmitErrMsg(){
 }
 //get lat/long of user address submit from GEOCODE
 function getLatLong(location){
-fetch('https://maps.googleapis.com/maps/api/geocode/json?address=${location}&key=' + geoKey)
+fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${location}&key=${geoKey}`)
     .then(response => response.json())
     .then(responseJson =>{
      console.log(responseJson);
@@ -40,7 +40,7 @@ fetch('https://maps.googleapis.com/maps/api/geocode/json?address=${location}&key
  }
 //insert lat/long into CAMPGROUND api url default 50mile radius
 function getCamps(lat, lng){
-    fetch('https://www.hikingproject.com/data/get-campgrounds?lat=${lat}&lon=${lng}&maxDistance=30&key=' + hikeKey)
+    fetch(`https://www.hikingproject.com/data/get-campgrounds?lat=${lat}&lon=${lng}&maxDistance=30&key=${hikeKey}`)
     .then(response => {
         if(response.ok){
             return response.json();
@@ -78,7 +78,7 @@ function getCampNameOnClick(){
 }
 //get the lat and lng for the clicked camp
 function getCampLatLng(campName, campId){
-fetch('https://maps.googleapis.com/maps/api/geocode/json?address=${campName}&key=' + geokey)
+fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${campName}&key=${geoKey}`)
     .then(response => response.json())
     .then(responseJson =>{
      console.log(responseJson);
