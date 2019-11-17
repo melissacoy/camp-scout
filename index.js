@@ -1,5 +1,7 @@
 /* ----- LANDING PAGE -----*/
 'use strict'
+let geoKey = config.GEO_KEY;
+let hikeKey = config.HIKE_KEY;
 //listen for user address submit
 function onSubmit(){
     $('.js-search').click(event => {
@@ -18,8 +20,7 @@ function emptySubmitErrMsg(){
 }
 //get lat/long of user address submit from GEOCODE
 function getLatLong(location){
-fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${location}&key=AIzaSyARRomQEmDY_dVU6GdCuP_1K2rfyVSjs7I
-`)
+fetch('https://maps.googleapis.com/maps/api/geocode/json?address=${location}&key=' + geoKey)
     .then(response => response.json())
     .then(responseJson =>{
      console.log(responseJson);
@@ -39,7 +40,7 @@ fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${location}&key
  }
 //insert lat/long into CAMPGROUND api url default 50mile radius
 function getCamps(lat, lng){
-    fetch(`https://www.hikingproject.com/data/get-campgrounds?lat=${lat}&lon=${lng}&maxDistance=30&key=200633003-a5fff20872e4b167772002afa37f3068`)
+    fetch('https://www.hikingproject.com/data/get-campgrounds?lat=${lat}&lon=${lng}&maxDistance=30&key=' + hikeKey)
     .then(response => {
         if(response.ok){
             return response.json();
@@ -48,8 +49,7 @@ function getCamps(lat, lng){
     })
     .then(responseJson => {
         console.log(responseJson)
-        displayCamps(responseJson)
-        getTrails(lat,lng);
+        displayCamps(responseJson);
     })
     .catch(Error => {
         $('form').append(`<h2 class="error">Something went wrong getting your campsites.</h2>`)
@@ -57,20 +57,48 @@ function getCamps(lat, lng){
 }
 //display CAMPGROUND search results        
 function displayCamps(responseJson){
-    $('ul').eq(0).removeClass('hidden')
+    $('#results').removeClass('hidden')
     for (let i = 0; i < responseJson.campgrounds.length; i++){
-        $(`.js-park-list`).append(`<li><h3 class="js-park-name">${responseJson.campgrounds[i].name}</h3>
-        <button type="submit" class="js-details js-trails">Get Trails</button>
+        $(`#results`).append(`<div class='park-box' id='camp-container-${i}'><h3 class="js-park-name" id='park-${i}'>${responseJson.campgrounds[i].name}</h3>
+        <button type="submit" class="js-details js-trails" id='get-trl-btn-${i}'>Get Trails</button>
         <a href="${responseJson.campgrounds[i].url}" target="_blank">Camp Website</a>
-        </li>`);
+        </div>`);
     };
+   return getCampNameOnClick();
 }         
-//get lat/lng from camp
+//listen for Get Trails selection
+function getCampNameOnClick(){
+    $('.js-trails').on('click', function(){
+        let campName = $(this).siblings('.js-park-name').text();
+        console.log(campName);
+        let campId = $(this).closest('.park-box').attr('id');
+        console.log(campId);
+        getCampLatLng(campName, campId);
+    });
+}
+//get the lat and lng for the clicked camp
+function getCampLatLng(campName, campId){
+fetch('https://maps.googleapis.com/maps/api/geocode/json?address=${campName}&key=' + geokey)
+    .then(response => response.json())
+    .then(responseJson =>{
+     console.log(responseJson);
+     if(responseJson.status !=='OK'){
+        throw new Error(responseJson.statusText);
+     } else {
+        const campLat = (responseJson.results[0].geometry.location.lat);
+        const campLng = (responseJson.results[0].geometry.location.lng);
+        console.log(campLat);
+        console.log(campLng);
+        getTrails(campLat, campLng, campId);
+     };
+    })
+    .catch(Error => {
+    $('form').append(`<h2 class="error">There was a problem finding your trails.</h2>`)
+    });
+}
 //listen for campground GETTRAILS selection
-function getTrails(lat, lng){
-$('.js-trails').click(event => {
-    event.preventDefault();
-    fetch(`https://www.hikingproject.com/data/get-trails?lat=${lat}&lon=${lng}&maxDistance=20&key=200636231-2cd9c0c730ff93b084c384abe865ca3c`)
+function getTrails(campLat, campLng, campId){
+    fetch(`https://www.hikingproject.com/data/get-trails?lat=${campLat}&lon=${campLng}&maxDistance=20&key=200636231-2cd9c0c730ff93b084c384abe865ca3c`)
     .then(response => {
         if(response.ok){
             return response.json();
@@ -79,35 +107,28 @@ $('.js-trails').click(event => {
     })
     .then(responseJson => {
         console.log(responseJson)
+        $('#'+ campId).append(`<ul class='js-trail-list'id='js-trail-ul'></ul>`);
         return displayTrails(responseJson);
     })
     .catch(Error => {
         $('p').html(`Something went wrong getting your trails.`)
-    });
-});
-}
+    })
+};
 //render trail details (name, length, rating)
 function displayTrails(responseJson){
     for (let i = 0; i < responseJson.trails.length; i++){
-        $('ul').eq(1).removeClass('hidden')
-        $(`.js-trail-list`).append(`<li><h3 class="js-trail-name">${responseJson.trails[i].name}</h3>
-        <p class="js-trail-length">${responseJson.trails[i].length}</p>
-        <p class="js-trail-difficulty">${responseJson.trails[i].difficulty}</p>
-        <p class="js-trail-stars">${responseJson.trails[i].stars}</p>
+        $('#js-trail-ul').append(`<li><h3 class="js-trail-name">${responseJson.trails[i].name}</h3>
+        <p class="js-trail-summary">${responseJson.trails[i].summary}</p>
+        <p class="js-trail-location">Location: ${responseJson.trails[i].location}</p>
+        <p class="js-trail-length">Distance: ${responseJson.trails[i].length} miles</p>
+        <p class="js-trail-difficulty">Difficulty: ${responseJson.trails[i].difficulty}</p>
+        <p class="js-trail-stars">Rating: ${responseJson.trails[i].stars} stars</p>
         </li>`);
     };
 }       
-//render campground detail description and links upon selection
-
-
-
-
-
-
-
-//clear values for another search
+//clear values for new search
 function clearValues(){
-    $('.js-results').html('');
+    $('#results').html('');
     $('.error').html('');
 }
 $(onSubmit);
