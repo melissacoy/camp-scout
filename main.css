@@ -2,75 +2,97 @@
     margin: 0; 
     padding: 0; 
     box-sizing: border-box;
+    outline: none;
     font-size: 16px;
     font-family: sans-serif;
-    max-width: 800px;
 }
-header{
+.header{
+    background-image: url('images/head-tent.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 30%;
+    min-height: 300px;
+    margin: 0;
+}
+.title{
+    color: #FFBA01;
+    padding-top: 20%;
+    margin: auto 20% auto 20%;
     text-align: center;
-    margin: 10% auto;
-}
-h1{
     font-size: 50px;
-    border: 2px solid gray;
-    border-radius: 5px;
-    padding: 30px;
-    width: 50%;
-    margin: 0 auto;
+    text-shadow: 5px 5px #252F3A;
+}
+body{
+    background-color: #CDB5B4;
+    color: #252F3A;
+}
+.search-bar, .trl-btn{
+    
+    color: #252F3A;
+    display: block;
+    width: 80%;
+    height: 25px;
+    margin: 5% auto 0 auto;
+    border: 1px solid #252F3A;
+    border-radius: 3px;
 }
 .search-bar{
-    display: block;
-    width: 280px;
-    height: 25px;
-    margin: 0 auto;
+    background: transparent;
+}
+.trl-btn{
+    background-color: #CDB5B4;
+}
+input::placeholder{
+    color: #252F3A;
 }
 .summary{
     max-width: 75%;
     margin: 5% auto 0% auto;
-    text-align: center;
-}
-.filter{
-    text-align: center;
-    background-color: lightgray;
-    border: 1px solid darkgray;
-    width: 30%;
-    margin: 2% auto;
-    padding: 5px;
 }
 main{
     width: 80%;
     margin: 0 auto;
 }
 .list-container{
-    border: 2px solid darkgray;
+    background-color: #A08685;
+    background-blend-mode: lighten;
+    border-radius: 5px;
 }
 ul{
     list-style: none;
 }
+li{
+    border: 2px solid #CDB5B4;
+}
 .park-list{
-    margin: 0 auto;
+    margin: 2% auto;
     list-style: none;
 }
 .park-item{
     padding: 2%;
-    border-bottom: 2px solid darkgray;
+
 }
 .park-box p{
-    border: 2px solid darkgray;
     text-align: center;
 }
-.js-details{
-    border: 1px solid darkgray;
+a{
+    text-align: center;
+    color: inherit;
+    text-decoration: inherit;
+    margin: 0 auto;
 }
-button, input[type="submit"]{
+ .trl-btn, input[type="submit"]{
     display: block;
-    width: 250px;
+    width: 80%;
     height: 25px;
     margin: 5px auto 0 auto;
+    -webkit-appearance: none;
+    -moz-appearance: none;
 }
 h2, h3{
     text-align: center;
     padding: 2%;
+    color: #252F3A;
 }
 .hidden{
     display: none;
@@ -88,7 +110,7 @@ h2, h3{
 .trail-item{
     margin-top: 2%;
     padding: 2%;
-    border: 2px solid darkgray;
+    border: 2px solid #252F3A;
 }
 .trail-item *{
     display: inline-block;

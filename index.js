@@ -23,14 +23,11 @@ function getLatLong(location){
 fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${location}&key=${geoKey}`)
     .then(response => response.json())
     .then(responseJson =>{
-     console.log(responseJson);
      if(responseJson.status !=='OK'){
         throw new Error(responseJson.statusText);
      } else {
         const lat = (responseJson.results[0].geometry.location.lat);
         const lng = (responseJson.results[0].geometry.location.lng);
-        console.log(lat);
-        console.log(lng);
         getCamps(lat, lng);
      };
     })
@@ -48,31 +45,36 @@ function getCamps(lat, lng){
         throw new Error(response.statusText);
     })
     .then(responseJson => {
-        console.log(responseJson)
         displayCamps(responseJson);
     })
     .catch(Error => {
-        $('form').append(`<h2 class="error">Something went wrong getting your campsites.</h2>`)
+        $('form').append(`<h2 class="error">Something went wrong getting your campgrounds.</h2>`)
     });
 }
 //display CAMPGROUND search results        
 function displayCamps(responseJson){
-    $('#results').removeClass('hidden')
-    for (let i = 0; i < responseJson.campgrounds.length; i++){
+    $('p').addClass('hidden');
+    let campArray = (responseJson.campgrounds);
+    if (responseJson.campgrounds.length === 0) {
+        $('form').append(`<h2 class='error'>We couldn't find any campgrounds in that area. Try 
+        Searching in a different location.</h2>`);
+    }
+    else { 
+        $('#results').removeClass('hidden')
+        for (let i = 0; i < responseJson.campgrounds.length; i++){
         $(`#results`).append(`<div class='park-box' id='camp-container-${i}'><h3 class="js-park-name" id='park-${i}'>${responseJson.campgrounds[i].name}</h3>
-        <button type="submit" class="js-details js-trails" id='get-trl-btn-${i}'>Get Trails</button>
+        <button type="submit" class="js-details trl-btn js-trails" id='get-trl-btn-${i}'>Get Trails</button>
         <a href="${responseJson.campgrounds[i].url}" target="_blank">Camp Website</a>
         </div>`);
     };
+};
    return getCampNameOnClick();
-}         
+};         
 //listen for Get Trails selection
 function getCampNameOnClick(){
     $('.js-trails').on('click', function(){
         let campName = $(this).siblings('.js-park-name').text();
-        console.log(campName);
         let campId = $(this).closest('.park-box').attr('id');
-        console.log(campId);
         getCampLatLng(campName, campId);
     });
 }
@@ -81,14 +83,11 @@ function getCampLatLng(campName, campId){
 fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${campName}&key=${geoKey}`)
     .then(response => response.json())
     .then(responseJson =>{
-     console.log(responseJson);
      if(responseJson.status !=='OK'){
         throw new Error(responseJson.statusText);
      } else {
         const campLat = (responseJson.results[0].geometry.location.lat);
         const campLng = (responseJson.results[0].geometry.location.lng);
-        console.log(campLat);
-        console.log(campLng);
         getTrails(campLat, campLng, campId);
      };
     })
@@ -106,7 +105,6 @@ function getTrails(campLat, campLng, campId){
         throw Error(response.statusText);
     })
     .then(responseJson => {
-        console.log(responseJson)
         $('#'+ campId).append(`<ul class='js-trail-list'id='js-trail-ul'></ul>`);
         return displayTrails(responseJson);
     })
