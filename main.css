@@ -6,10 +6,19 @@
     font-size: 16px;
     font-family: sans-serif;
 }
+html{
+    background: url('images/head-tent.jpg') no-repeat center center fixed;
+    background-size: cover;
+    background-color: rgba(0, 0, 0, 0.3);
+    background-blend-mode: color-burn;
+    height: 100%;
+    overflow: hidden;
+    
+}
+body{
+    color: #FFBA01;
+}
 .header{
-    background-image: url('images/head-tent.jpg');
-    background-repeat: no-repeat;
-    background-position: center center;
     height: 30%;
     min-height: 300px;
     margin: 0;
@@ -22,18 +31,13 @@
     font-size: 50px;
     text-shadow: 5px 5px #252F3A;
 }
-body{
-    background-color: #CDB5B4;
-    color: #252F3A;
-}
 .search-bar, .trl-btn{
-    
-    color: #252F3A;
+    color: #FFBA01;
     display: block;
     width: 80%;
     height: 25px;
     margin: 5% auto 0 auto;
-    border: 1px solid #252F3A;
+    border: 1px solid #FFBA01;
     border-radius: 3px;
 }
 .search-bar{
@@ -43,19 +47,22 @@ body{
     background-color: #CDB5B4;
 }
 input::placeholder{
-    color: #252F3A;
+    background: transparent;
+    color: #FFBA01;
 }
 .summary{
     max-width: 75%;
     margin: 5% auto 0% auto;
+    text-shadow: 1px 2px #252F3A;
+    mix-blend-mode: lighten;
 }
 main{
     width: 80%;
     margin: 0 auto;
 }
 .list-container{
-    background-color: #A08685;
-    background-blend-mode: lighten;
+    background: #FFBA01;
+    opacity: 85%;
     border-radius: 5px;
 }
 ul{
@@ -70,7 +77,6 @@ li{
 }
 .park-item{
     padding: 2%;
-
 }
 .park-box p{
     text-align: center;
@@ -107,7 +113,7 @@ h2, h3{
 .trail-name{
     font-weight: bold;
 }
-.trail-item{
+.trail-item {
     margin-top: 2%;
     padding: 2%;
     border: 2px solid #252F3A;
