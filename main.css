@@ -9,14 +9,14 @@
 html{
     background: url('images/head-tent.jpg') no-repeat center center fixed;
     background-size: cover;
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.5);
     background-blend-mode: color-burn;
     height: 100%;
     overflow: hidden;
     
 }
 body{
-    color: #FFBA01;
+    color: #ffffff;
 }
 .header{
     height: 30%;
@@ -24,7 +24,7 @@ body{
     margin: 0;
 }
 .title{
-    color: #FFBA01;
+    color: #fff;
     padding-top: 20%;
     margin: auto 20% auto 20%;
     text-align: center;
@@ -32,23 +32,31 @@ body{
     text-shadow: 5px 5px #252F3A;
 }
 .search-bar, .trl-btn{
-    color: #FFBA01;
+    color: #fff;
     display: block;
     width: 80%;
     height: 25px;
     margin: 5% auto 0 auto;
-    border: 1px solid #FFBA01;
+    border: 1px solid #fff;
     border-radius: 3px;
 }
 .search-bar{
     background: transparent;
 }
 .trl-btn{
-    background-color: #CDB5B4;
+    border: none;
+    background-color: #FFBA01;
+    color: #000;
 }
 input::placeholder{
+    text-align: center;
     background: transparent;
-    color: #FFBA01;
+    color: white;
+}
+input:focus{
+    color: black;
+    border: 1px solid #FFBA01;
+    background: #FFBA01;
 }
 .summary{
     max-width: 75%;
@@ -61,8 +69,7 @@ main{
     margin: 0 auto;
 }
 .list-container{
-    background: #FFBA01;
-    opacity: 85%;
+    background: rgba(255,255,255,0.5);
     border-radius: 5px;
 }
 ul{
@@ -80,10 +87,10 @@ li{
 }
 .park-box p{
     text-align: center;
+    margin: 0 auto;
 }
 a{
-    text-align: center;
-    color: inherit;
+    color: #000;
     text-decoration: inherit;
     margin: 0 auto;
 }
@@ -98,7 +105,9 @@ a{
 h2, h3{
     text-align: center;
     padding: 2%;
-    color: #252F3A;
+}
+h3{
+    color: #000;
 }
 .hidden{
     display: none;

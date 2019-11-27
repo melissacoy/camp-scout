@@ -63,8 +63,8 @@ function displayCamps(responseJson){
         $('#results').removeClass('hidden')
         for (let i = 0; i < responseJson.campgrounds.length; i++){
         $(`#results`).append(`<div class='park-box' id='camp-container-${i}'><h3 class="js-park-name" id='park-${i}'>${responseJson.campgrounds[i].name}</h3>
-        <button type="submit" class="js-details trl-btn js-trails" id='get-trl-btn-${i}'>Get Trails</button>
         <a href="${responseJson.campgrounds[i].url}" target="_blank">Camp Website</a>
+        <button type="submit" class="js-details trl-btn js-trails" id='get-trl-btn-${i}'>Get Trails</button>
         </div>`);
     };
 };
