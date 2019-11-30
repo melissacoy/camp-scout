@@ -14,11 +14,12 @@ html{
     background-color: rgba(0, 0, 0, 0.5);
     background-blend-mode: color-burn;
     height: 100%;
-    overflow: hidden;
-    overflow-y: scroll;
+    
 }
 body{
     color: #ffffff;
+    overflow: hidden;
+    overflow-y: scroll;
 }
 .header{
     height: 30%;
@@ -54,6 +55,9 @@ body{
     border: none;
     background-color: #FFBA01;
     color: #000;
+}
+button:hover{
+    cursor: pointer;
 }
 input::placeholder{
     text-align: center;
@@ -96,9 +100,6 @@ li{
     margin: 0 auto;
     list-style: none;
 }
-.park-item{
-    padding: 2%;
-}
 .park-box{
     background: rgba(255,255,255,0.6);
     width: 80%;
@@ -129,11 +130,20 @@ h3{
 .hidden{
     display: none;
 }
+.trail-list{
+    margin-top: 2%;
+    height: 150px;
+    overflow: hidden;
+    overflow-y: scroll;
+}
 .trail-box{
     color: #000;
     background: rgba(255,255,255,0.9);
     border-radius: 5px;
     margin: 2% auto;
+}
+.hide-trail{
+    width: 100%;
 }
 .js-trail-summary{
     text-align: center;
@@ -152,13 +162,16 @@ h3{
 .cta *{
 margin-bottom: 5%;
 }
-@media screen and (max-width: 600px) {
+@media screen and (min-width: 600px) {
   #results {
     flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
     }
   .park-box{
-    width: 40%;
-    height: 150px;
+    width: 30%;
+    height: auto;
     margin: 5%;
+    padding: 2%;
     }
 }
