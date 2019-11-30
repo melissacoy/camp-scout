@@ -32,7 +32,7 @@ fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${location}&key
      };
     })
     .catch(Error => {
-    $('form').append(`<h2 class="error">Please review the instructions and submit a valid address.</h2>`)
+    $('form').append(`<h2 class="error">Please submit a different address.</h2>`)
     });
  }
 //insert lat/long into CAMPGROUND api url default 50mile radius
