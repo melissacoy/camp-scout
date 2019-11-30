@@ -1,4 +1,3 @@
-/* ----- LANDING PAGE -----*/
 'use strict'
 let geoKey = (config.GEO_KEY);
 let hikeKey = (config.HIKE_KEY);
@@ -32,7 +31,7 @@ fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${location}&key
      };
     })
     .catch(Error => {
-    $('form').append(`<h2 class="error">Please submit a different address.</h2>`)
+    $('form').append(`<h2 class='error'>Please submit a different address.</h2>`)
     });
  }
 //insert lat/long into CAMPGROUND api url default 50mile radius
@@ -48,7 +47,7 @@ function getCamps(lat, lng){
         displayCamps(responseJson);
     })
     .catch(Error => {
-        $('form').append(`<h2 class="error">Something went wrong getting your campgrounds.</h2>`)
+        $('form').append(`<h2 class='error'>Something went wrong getting your campgrounds.</h2>`)
     });
 }
 //display CAMPGROUND search results        
@@ -62,9 +61,9 @@ function displayCamps(responseJson){
     else { 
         $('#results').removeClass('hidden')
         for (let i = 0; i < responseJson.campgrounds.length; i++){
-        $(`#results`).append(`<div class='park-box' id='camp-container-${i}'><h3 class="js-park-name" id='park-${i}'>${responseJson.campgrounds[i].name}</h3>
-        <a href="${responseJson.campgrounds[i].url}" target="_blank">Camp Website</a>
-        <button type="submit" class="js-details trl-btn js-trails" id='get-trl-btn-${i}'>Get Trails</button>
+        $(`#results`).append(`<div class='park-box' id='camp-container-${i}'><h3 class='js-park-name' id='park-${i}'>${responseJson.campgrounds[i].name}</h3>
+        <a href='${responseJson.campgrounds[i].url}' target='_blank'>Camp Website</a>
+        <button type='submit' class='js-details trl-btn js-trails' id='get-trl-btn-${i}'>Get Trails</button>
         <button type='submit' class='trl-btn js-hide-trail hidden' id='hide-trl-btn${i}'>Hide Trails</button>
         </div>`);
     };
@@ -100,7 +99,7 @@ fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${campName}&key
      };
     })
     .catch(Error => {
-    $('form').append(`<h2 class="error">There was a problem finding your trails.</h2>`)
+    $('form').append(`<h2 class='error'>There was a problem finding your trails.</h2>`)
     });
 }
 //listen for campground GETTRAILS selection
@@ -130,11 +129,11 @@ function displayTrails(responseJson){
     else {
     for (let i = 0; i < trailArray.length; i++){
         $('#js-trail-ul').append(`<li class='trail-box' id='trail-box${i}><h3 class='js-trail-name'>${responseJson.trails[i].name}</h3>
-        <p class="js-trail-summary">${responseJson.trails[i].summary}</p>
-        <p class="js-trail-location">Location: ${responseJson.trails[i].location}</p>
-        <p class="js-trail-length">Distance: ${responseJson.trails[i].length} miles</p>
-        <p class="js-trail-difficulty">Difficulty: ${responseJson.trails[i].difficulty}</p>
-        <p class="js-trail-stars">Rating: ${responseJson.trails[i].stars} stars</p>
+        <p class='js-trail-summary'>${responseJson.trails[i].summary}</p>
+        <p class='js-trail-location'>Location: ${responseJson.trails[i].location}</p>
+        <p class='js-trail-length'>Distance: ${responseJson.trails[i].length} miles</p>
+        <p class='js-trail-difficulty'>Difficulty: ${responseJson.trails[i].difficulty}</p>
+        <p class='js-trail-stars'>Rating: ${responseJson.trails[i].stars} stars</p>
         </li>`);
     };
   }
