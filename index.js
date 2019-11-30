@@ -115,7 +115,7 @@ function getTrails(campLat, campLng, campId){
 //render trail details (name, length, rating)
 function displayTrails(responseJson){
     for (let i = 0; i < responseJson.trails.length; i++){
-        $('#js-trail-ul').append(`<li><h3 class="js-trail-name">${responseJson.trails[i].name}</h3>
+        $('#js-trail-ul').append(`<li class="trail-box"><h3 class="js-trail-name">${responseJson.trails[i].name}</h3>
         <p class="js-trail-summary">${responseJson.trails[i].summary}</p>
         <p class="js-trail-location">Location: ${responseJson.trails[i].location}</p>
         <p class="js-trail-length">Distance: ${responseJson.trails[i].length} miles</p>
@@ -127,6 +127,6 @@ function displayTrails(responseJson){
 //clear values for new search
 function clearValues(){
     $('#results').html('');
-    $('.error').html('');
+    $('.error').remove('');
 }
 $(onSubmit);

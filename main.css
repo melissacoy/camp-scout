@@ -1,10 +1,12 @@
-* {
+*{
     margin: 0; 
     padding: 0; 
     box-sizing: border-box;
     outline: none;
     font-size: 16px;
     font-family: sans-serif;
+    -webkit-appearance: none;
+    -moz-appearance: none;
 }
 html{
     background: url('images/head-tent.jpg') no-repeat center center fixed;
@@ -13,7 +15,7 @@ html{
     background-blend-mode: color-burn;
     height: 100%;
     overflow: hidden;
-    
+    overflow-y: scroll;
 }
 body{
     color: #ffffff;
@@ -25,7 +27,7 @@ body{
 }
 .title{
     color: #fff;
-    padding-top: 20%;
+    padding-top: 15%;
     margin: auto 20% auto 20%;
     text-align: center;
     font-size: 50px;
@@ -35,13 +37,18 @@ body{
     color: #fff;
     display: block;
     width: 80%;
-    height: 25px;
-    margin: 5% auto 0 auto;
-    border: 1px solid #fff;
+    max-width: 400px;
+    height: 30px;
+    margin: 10px auto 0 auto;
+    border: 2px solid #fff;
     border-radius: 3px;
 }
 .search-bar{
     background: transparent;
+}
+.search-bar:hover{
+    color: #000;
+    background-color: #FFBA01;
 }
 .trl-btn{
     border: none;
@@ -53,14 +60,17 @@ input::placeholder{
     background: transparent;
     color: white;
 }
+input::placeholder:focus{
+    columns: #000;
+}
 input:focus{
-    color: black;
+    color: #000;
     border: 1px solid #FFBA01;
     background: #FFBA01;
 }
 .summary{
-    max-width: 75%;
-    margin: 5% auto 0% auto;
+    max-width: 420px;
+    margin: 20px auto 0% auto;
     text-shadow: 1px 2px #252F3A;
     mix-blend-mode: lighten;
 }
@@ -68,28 +78,37 @@ main{
     width: 80%;
     margin: 0 auto;
 }
-.list-container{
-    background: rgba(255,255,255,0.5);
-    border-radius: 5px;
-}
 ul{
     list-style: none;
+    overflow: hidden; 
+    overflow-y: scroll;
 }
 li{
-    border: 2px solid #CDB5B4;
+    border: 2px solid transparent;
+}
+#results {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
 }
 .park-list{
-    margin: 2% auto;
+    margin: 0 auto;
     list-style: none;
 }
 .park-item{
     padding: 2%;
 }
-.park-box p{
+.park-box{
+    background: rgba(255,255,255,0.6);
+    width: 80%;
+    margin: 2%;
+    padding: 5%;
+    max-width: 400px;
+    border-radius: 5px;
     text-align: center;
-    margin: 0 auto;
 }
-a{
+.park-box a{
     color: #000;
     text-decoration: inherit;
     margin: 0 auto;
@@ -99,8 +118,6 @@ a{
     width: 80%;
     height: 25px;
     margin: 5px auto 0 auto;
-    -webkit-appearance: none;
-    -moz-appearance: none;
 }
 h2, h3{
     text-align: center;
@@ -112,9 +129,11 @@ h3{
 .hidden{
     display: none;
 }
-.js-trail-list{
+.trail-box{
+    color: #000;
+    background: rgba(255,255,255,0.9);
+    border-radius: 5px;
     margin: 2% auto;
-    max-width: 600px;
 }
 .js-trail-summary{
     text-align: center;
@@ -122,7 +141,7 @@ h3{
 .trail-name{
     font-weight: bold;
 }
-.trail-item {
+.trail-item{
     margin-top: 2%;
     padding: 2%;
     border: 2px solid #252F3A;
@@ -130,6 +149,16 @@ h3{
 .trail-item *{
     display: inline-block;
 }
-.cta * {
+.cta *{
 margin-bottom: 5%;
+}
+@media screen and (max-width: 600px) {
+  #results {
+    flex-direction: row;
+    }
+  .park-box{
+    width: 40%;
+    height: 150px;
+    margin: 5%;
+    }
 }
