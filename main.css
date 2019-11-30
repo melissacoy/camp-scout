@@ -5,6 +5,7 @@
     outline: none;
     font-size: 16px;
     font-family: sans-serif;
+    font-family: sans-serif;
     -webkit-appearance: none;
     -moz-appearance: none;
 }
@@ -14,12 +15,17 @@ html{
     background-color: rgba(0, 0, 0, 0.5);
     background-blend-mode: color-burn;
     height: 100%;
+    overflow: hidden;
+    overflow-y: scroll;
     
 }
 body{
     color: #ffffff;
-    overflow: hidden;
-    overflow-y: scroll;
+    font-family: 'Hind';
+}
+h1, h2, h3, h4{
+    font-family: 'Montserrat';
+    font-weight: 700 bold;
 }
 .header{
     height: 30%;
@@ -55,6 +61,10 @@ body{
     border: none;
     background-color: #FFBA01;
     color: #000;
+}
+.trl-btn:hover{
+    background-color: #252F3A;
+    color: #fff;
 }
 button:hover{
     cursor: pointer;
@@ -103,6 +113,7 @@ li{
 .park-box{
     background: rgba(255,255,255,0.6);
     width: 80%;
+    height: auto;
     margin: 2%;
     padding: 5%;
     max-width: 400px;
@@ -113,6 +124,9 @@ li{
     color: #000;
     text-decoration: inherit;
     margin: 0 auto;
+}
+.park-box a:visited{
+color: #FFBA01;
 }
  .trl-btn, input[type="submit"]{
     display: block;
