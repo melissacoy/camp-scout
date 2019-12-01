@@ -10,9 +10,8 @@
     -moz-appearance: none;
 }
 html{
-    background: url('images/main-tent-dark.png') no-repeat center center fixed;
+    background: url('images/tent-background.png') no-repeat center center fixed;
     background-size: cover;
-    /*background-color: rgba(0, 0, 0, 0.5);*/
     background-blend-mode: color-burn;
     height: 100%;
     overflow: hidden;
