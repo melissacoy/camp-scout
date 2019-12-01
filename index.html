@@ -13,21 +13,19 @@
 <body>
     <header class='header'>
       <h1 class='title'>Camp Scout</h1>
-    </header>
-    <section>
         <form id='js-form'>
             <label for='search' class='hidden'>Search</label>
             <input type='text' id='search' class='search-bar js-address-search' placeholder='enter a city, address, or landmark' onfocus="this.placeholder=''" required>
             <button type='submit' class='search-bar js-search'>Scout</button>
         </form>
-    </section>
+    </header>
     <main class='summary'>
         <h2 class='instruct'>Search for campgrounds across the US and Canada and 
             get information on nearby hiking trails.
         </h2>
+        <div class='list-container js-park-list hidden' id='results'>
+        </div>
     </main>
-    <section class='list-container js-park-list hidden' id='results'>
-    </section>
 <!--SCRIPTS-->
     <script
   src='https://code.jquery.com/jquery-3.4.1.min.js'
