@@ -10,9 +10,9 @@
     -moz-appearance: none;
 }
 html{
-    background: url('images/head-tent.jpg') no-repeat center center fixed;
+    background: url('images/main-tent.png') no-repeat center center fixed;
     background-size: cover;
-    background-color: rgba(0, 0, 0, 0.5);
+    /*background-color: rgba(0, 0, 0, 0.5);*/
     background-blend-mode: color-burn;
     height: 100%;
     overflow: hidden;
@@ -83,10 +83,14 @@ input:focus{
     background: #FFBA01;
 }
 .summary{
-    max-width: 420px;
+    max-width: 430px;
     margin: 20px auto 0% auto;
     text-shadow: 1px 2px #252F3A;
     mix-blend-mode: lighten;
+}
+.instruct{
+    text-align: left;
+    font-weight: 400;
 }
 main{
     width: 80%;
