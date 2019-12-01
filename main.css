@@ -37,7 +37,7 @@ h1, h2, h3, h4{
     margin: auto 20% auto 20%;
     text-align: center;
     font-size: 50px;
-    /*text-shadow: 5px 5px #252F3A;*/
+    text-shadow: 5px 5px #252F3A;
 }
 .search-bar, .trl-btn{
     color: #fff;
@@ -84,7 +84,7 @@ input:focus{
 .summary{
     max-width: 430px;
     margin: 20px auto 0% auto;
-   /* text-shadow: 1px 2px #252F3A;*/
+    text-shadow: 1px 2px #252F3A;
     mix-blend-mode: lighten;
 }
 .instruct{
