@@ -76,6 +76,7 @@ function getCampNameOnClick(){
         let campName = $(this).siblings('.js-park-name').text();
         let campId = $(this).closest('.park-box').attr('id');
         let btnId = $(this).siblings('.js-hide-trail').attr('id');
+        $(this).addClass('hidden');
         getCampLatLng(campName, campId);
         displayHideTrails(btnId, campId);
     });
@@ -141,6 +142,7 @@ function displayTrails(responseJson){
 function hideTrails(btnId){
  $('#' + btnId).click(event =>{ 
     event.preventDefault();
+    $('#'+ btnId).siblings('.trl-btn').removeClass('hidden');
     $('#'+ btnId).siblings('#js-trail-ul').remove();
     $('#'+ btnId).addClass('hidden');
     })
